@@ -3,6 +3,7 @@ import { useBuilderStore } from "../store/builderStore";
 import { getLineItems, lineItemsSchema } from "../store/selectors";
 import { toast } from "sonner";
 import { useState } from "react";
+import { clearSavedSystem } from "../store/persistence";
 
 const checkoutRequestSchema = z.object({
   items: lineItemsSchema.min(1, "Cart is empty"),
@@ -41,6 +42,7 @@ const useCheckout = () => {
         },
         icon: "✅",
       });
+      clearSavedSystem();
       startOver();
     } catch (error) {
       console.error(error);
