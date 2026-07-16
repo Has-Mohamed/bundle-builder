@@ -69,3 +69,8 @@ docker compose up --build
 > To point at a different host, edit the `args.VITE_API_URL` value in `docker-compose.yml` before building.
 
 ---
+
+### backend had two apis one for getting the products data and one for checkout
+
+after calling checkout it should rest the cart in the frontend state to initial state
+and remove the items from the local storage for next use in building a new bundle
