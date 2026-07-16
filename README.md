@@ -1,4 +1,4 @@
-# Bundle Builder — Take-Home Assessment
+# Bundle Builder
 
 A data-driven, multi-step security-system **bundle builder** with a live review panel.  
 The project is split into two services that run side-by-side:
