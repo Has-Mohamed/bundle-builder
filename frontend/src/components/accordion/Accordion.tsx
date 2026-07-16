@@ -6,7 +6,6 @@ export function Accordion() {
   const openStep = useBuilderStore((s) => s.openStep);
   const setOpenStep = useBuilderStore((s) => s.setOpenStep);
   const toggleStep = useBuilderStore((s) => s.toggleStep);
-  console.log(openStep);
 
   return (
     <div className="flex flex-col gap-3">
