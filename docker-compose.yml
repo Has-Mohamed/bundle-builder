@@ -1,0 +1,29 @@
+services:
+  # ── Backend (Node.js / Express / ts-node) ────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ecom_backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+
+  # ── Frontend (React / Vite → Nginx) ──────────────────────────────────────
+  frontend:
+    build:
+      context: ./bundle-builder
+      dockerfile: Dockerfile
+      args:
+        # Points the React app at the backend container.
+        # When both containers run on the same host, use the host machine's
+        # address so the browser can reach the backend from outside Docker.
+        VITE_API_URL: http://localhost:3000
+    container_name: ecom_frontend
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
